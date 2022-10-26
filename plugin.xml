@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="cordova-plugin-shortcut-target"
+        version="0.0.1">
+
+  <name>Shortcut intents Extension</name>
+  <author>Ahmed Elrefaiy</author>
+
+  <description>
+    Add a shortcut intents target to your cordova project.
+  </description>
+
+  <engines>
+    <engine name="cordova" version="&gt;=6.0.0"/>
+  </engines>
+
+  <platform name="ios">
+    <config-file target="config.xml" parent="/*"></config-file>
+
+    <config-file parent="com.apple.security.application-groups" target="*-Debug.plist">
+      <array>
+        <string>group.__APP_IDENTIFIER__</string>
+      </array>
+    </config-file>
+    <config-file parent="com.apple.security.application-groups" target="*-Release.plist">
+      <array>
+        <string>group.__APP_IDENTIFIER__</string>
+      </array>
+    </config-file>
+
+    <hook type="after_platform_add" src="hooks/prerequisites.js"/>
+    <hook type="after_platform_add" src="hooks/copyExtensionFolderToIosProjectFolder.js"/>
+    <hook type="after_platform_add" src="hooks/addTodayWidgetToProject.js"/>
+    <hook type="after_prepare" src="hooks/fixAppEntitlements.js"/>
+  </platform>
+</plugin>
