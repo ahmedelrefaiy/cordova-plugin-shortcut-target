@@ -129,7 +129,7 @@ module.exports = function (context) {
 
             var widgetBundleId = WIDGET_BUNDLE_SUFFIX || 'widget';
             log('Your widget bundle id will be: ' + bundleId + '.' + widgetBundleId, 'info');
-
+            log('********************', 'info');
             var widgetFolder = path.join(iosFolder, widgetName);
             var sourceFiles = [];
             var resourceFiles = [];
@@ -143,7 +143,7 @@ module.exports = function (context) {
             var addEntitlementsFile = false;
             var entitlementsFileName;
             var projectPlistPath = path.join(iosFolder, projectName, 'Info.plist');
-            log('Your projectPlistPath will be: ' + projectPlistPath, 'info');
+            log("Your projectPlistPath will be: " + iosFolder + "" + projectName +"Info.plist", 'info');
             var projectPlistJson = plist.parse(fs.readFileSync(projectPlistPath, 'utf8'));
             var placeHolderValues = [
                 {
