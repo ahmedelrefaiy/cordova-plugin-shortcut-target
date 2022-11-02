@@ -269,7 +269,7 @@ module.exports = function (context) {
 
       // Add files which are not part of any build phase (config)
       configFiles.forEach(configFile => {
-          var file = pbxProject.addFile(configFile, { target: target.uuid }, pbxGroupKey);
+          var file = pbxProject.addFile(configFile, pbxGroupKey);
         // We need the reference to add the xcconfig to the XCBuildConfiguration as baseConfigurationReference
         if (path.extname(configFile) == '.xcconfig') {
           xcconfigReference = file.fileRef;
