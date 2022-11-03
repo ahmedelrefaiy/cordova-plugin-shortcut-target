@@ -377,6 +377,7 @@ module.exports = function (context) {
                                 buildSettingsObj['INFOPLIST_KEY_CFBundleDisplayName'] = widgetName;
                                 log('Added plist file reference to build settings!', 'info');
                                 buildSettingsObj['PRODUCT_BUNDLE_IDENTIFIER'] = '' + bundleId + '.' + widgetBundleId;
+                                log('Added PRODUCT_BUNDLE_IDENTIFIER to build settings! ' + bundleId + '.' + widgetBundleId, 'info');
                             }
                             if (projectContainsSwiftFiles) {
                                 buildSettingsObj['SWIFT_VERSION'] = SWIFT_VERSION || '3.0';
