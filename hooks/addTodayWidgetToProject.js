@@ -88,6 +88,7 @@ module.exports = function (context) {
     var WIDGET_BUNDLE_SUFFIX = getCordovaParameter("WIDGET_BUNDLE_SUFFIX", contents);
     var ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = getCordovaParameter("ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES", contents);
     var SWIFT_VERSION = getCordovaParameter("SWIFT_VERSION", contents);
+    var Build_TEAM_ID = getCordovaParameter("Build_TEAM_ID", contents);
 
     if (contents) {
         contents = contents.substring(contents.indexOf('<'));
@@ -377,7 +378,10 @@ module.exports = function (context) {
                                 buildSettingsObj['INFOPLIST_KEY_CFBundleDisplayName'] = widgetName;
                                 log('Added plist file reference to build settings!', 'info');
                                 buildSettingsObj['PRODUCT_BUNDLE_IDENTIFIER'] = '' + bundleId + '.' + widgetBundleId;
+                                buildSettingsObj['CODE_SIGN_STYLE'] = 'Automatic';
+                                buildSettingsObj['DEVELOPMENT_TEAM'] = Build_TEAM_ID;
                                 log('Added PRODUCT_BUNDLE_IDENTIFIER to build settings! ' + bundleId + '.' + widgetBundleId, 'info');
+                                log('Added Build_TEAM_ID  ' + Build_TEAM_ID, 'info');
                             }
                             if (projectContainsSwiftFiles) {
                                 buildSettingsObj['SWIFT_VERSION'] = SWIFT_VERSION || '3.0';
