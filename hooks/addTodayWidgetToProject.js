@@ -364,7 +364,7 @@ module.exports = function (context) {
                     if (typeof buildSettingsObj['PRODUCT_NAME'] !== 'undefined') {
                         var productName = buildSettingsObj['PRODUCT_NAME'];
                         log('>>>>>>> productName = ' + productName, 'info');
-                        if (productName.indexOf('Widget') >= 0) {
+                        if (productName.indexOf('Shortcuts') >= 0) {
                             if (addXcconfig) {
                                 configurations[key].baseConfigurationReference =
                                     xcconfigReference + ' /* ' + xcconfigFileName + ' */';
@@ -373,6 +373,9 @@ module.exports = function (context) {
                             if (addEntitlementsFile) {
                                 buildSettingsObj['CODE_SIGN_ENTITLEMENTS'] = '"' + widgetName + '/' + entitlementsFileName + '"';
                                 log('Added entitlements file reference to build settings!', 'info');
+                                buildSettingsObj['INFOPLIST_FILE'] = '"' + widgetName + '/' + ("Info.plist") + '"';
+                                buildSettingsObj['INFOPLIST_KEY_CFBundleDisplayName'] = widgetName;
+                                log('Added plist file reference to build settings!', 'info');
                             }
                             if (projectContainsSwiftFiles) {
                                 buildSettingsObj['SWIFT_VERSION'] = SWIFT_VERSION || '3.0';
