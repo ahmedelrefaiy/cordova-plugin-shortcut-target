@@ -1,16 +1,15 @@
-# Cordova Plugin for adding a Today Widget to an existing iOS Project dynamically
+# Cordova Plugin for adding a shortcut to an existing iOS Project dynamically
 
-This plugin extends your existing xcode project by parsing and modifying the project.pbxproj file using [cordova-node-xcode](https://github.com/apache/cordova-node-xcode). The today extension will be added to the XCode-Project everytime a `cordova platform add ios` is done.
+This plugin extends your existing xcode project by parsing and modifying the project.pbxproj file using [cordova-node-xcode](https://github.com/apache/cordova-node-xcode). The shortcut extension will be added to the XCode-Project everytime a `cordova platform add ios` is done.
 
 ## Usage
 
-### 1. First of all you have to create a Today Widget yourself using XCode (`Editor > Add target > Today Extension`)
+### 1. First of all you have to create a Intents Extension yourself using XCode (`Editor > Add target > Intents Extension`)
 
 * Fill in the fields, making note of the following:
- * Remember the name of the widget
+ * Remember the name of the Shortcut
  * Remember the last part of the bundle identifier (the suffix)
-* Enable the `App Groups` entitlement (`Targets > Select your widget > Capabilities`) and name your group: `group.<Bundle-ID of your host app>` (you can use the group to share NSUserDefaults between the Widget and the main App). _Note that you have to add this to your provisioning profile_
-* Implement your widget using `TodayViewController.swift` and `MainInterface.storyboard` (you can add additional source-files too).
+* Enable the `App Groups` entitlement (`Targets > Select your widget > Capabilities`) and name your group: `group.<Bundle-ID of your host app>` (you can use the group to share NSUserDefaults between the Shortcut and the main App). _Note that you have to add this to your provisioning profile_
 * When done implementing copy the `<Widget name>` folder from `</platforms/ios>` to anywhere tracked by your repository.
 * If your `MainInterface.storyboard` is listed in a sub-older named `Base.lproj`, pull it out of the folder and delete the folder. (there is no handling of variant-groups for different languages)
 * If you want to use an objective-c bridging header you can add it to the folder, just make sure it is named `Header.h` (`Bridging-Header.h` works too but the file won't be listed in XCode because the cordova bridging header has the same name and node-xcode thinks's it's the same file because it's checking the name and not the UUID)

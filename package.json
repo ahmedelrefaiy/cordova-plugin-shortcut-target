@@ -1,7 +1,7 @@
 {
   "name": "cordova-plugin-shortcut-target",
   "version": "1.0.0",
-  "description": "Add a toaday widget app extension target to your cordova project.",
+  "description": "Add a shortcut intents target to your cordova project.",
   "repository": {
     "type": "git",
     "url": "https://github.com/ahmedelrefaiy/cordova-plugin-shortcut-target"
